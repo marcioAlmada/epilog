@@ -11,5 +11,8 @@
         "psr-4": {
             "Epilog\\": "src/"
         }
+    },
+    "require": {
+        "docopt/docopt": "0.6.0"
     }
 }

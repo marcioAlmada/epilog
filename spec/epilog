@@ -1,0 +1,25 @@
+​
+             _   _
+            |_| | |            
+   ___ _ __  _  | | ___   __ _ 
+  / _ \ '_ \| | | |/ _ \ / _` |
+ |  __/ |_) | |_| | (_) | (_| |
+  \___| .__/|_____|\___/ \__, |
+      | |                 __/ |
+      |_|                |___/ 
+
+Usage:
+  epilog <file> [--sleep-interval=<s>][--filter=<filter>][--theme=<theme>][--theme-invert][--no-follow][--debug][--pretend]
+  epilog (-h | --help)
+  epilog --version
+
+Options:
+  --filter=<filter>        Only show messages compatible with a given regular expression.
+  -s --sleep-interval=<s>  Sleep interval [default: 1].
+  -t --theme=<theme>       Theme, see `Epilogs themes` to see list the list of themes [default: sunrise].
+  -i --theme-invert        Invert theme foreground vs background colors.
+  -n --no-follow           Print last logged lines and quit.
+  -d --debug               Reloads theme on every loop. Slow, but useful while building new themes.
+  -p --pretend             Presents a fake log stream with fake log messages. Useful for theme creators.
+  -h --help                Show this screen.
+  -v --version             Show version.
