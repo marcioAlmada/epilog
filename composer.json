@@ -1,0 +1,15 @@
+{
+    "name": "epilog/epilog",
+    "description": "Epilog is the cli Monolog viewer with style",
+    "authors": [
+        {
+            "name": "Márcio Almada",
+            "email": "marcio3w@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Epilog\\": "src/"
+        }
+    }
+}
