@@ -1,0 +1,79 @@
+name: #theme name
+author: #author name <author@email>
+theme:
+    # the theme to inherit properties
+    # extends: # default does not inherit
+
+    # the log line template
+    # you can use {date}, {level}, {logger}, {message}, {context}, {extra} template tags
+    # !!
+    template: "{date} {level}.{logger} {message} {context} {extra}"
+
+    # style to be applied at line start (ANSI escaped seq or literal string)
+    prepend:
+
+    # style to be applied at line ends  (ANSI escaped seq or literal string)
+    append: "\n"
+
+    # padding to compensate ANSI escaped characters
+    compensation: 0
+
+    # level section
+    level:
+        pad: 10
+        pad-type: STR_PAD_RIGHT
+        prepend:
+        append:
+        DEBUG:
+            prepend:
+            append:
+        INFO:
+            prepend:
+            append:
+        NOTICE:
+            prepend:
+            append:
+        WARNING:
+            prepend:
+            append:
+        ERROR:
+            prepend:
+            append:
+        CRITICAL:
+            prepend:
+            append:
+        ALERT:
+            prepend:
+            append:
+        EMERGENCY:
+            prepend:
+            append:
+        DEFAULT:
+            prepend:
+            append:
+
+    # message segent
+    message:
+        prepend:
+        append:
+
+    # date segment
+    date:
+        format: "Y-m-d H:i:s"
+        prepend:
+        append:
+
+    # logger section
+    logger:
+        prepend:
+        append:
+
+    # context section
+    context:
+        prepend:
+        append:
+
+    # extra section
+    extra:
+        prepend:
+        append:

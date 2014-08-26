@@ -15,7 +15,8 @@
     "require": {
         "ext-inotify": "*",
         "docopt/docopt": "0.6.0",
-        "igorw/get-in": "~1.0"
+        "igorw/get-in": "~1.0",
+        "symfony/yaml": "2.5.3",
     },
     "require-dev": {
         "mikey179/vfsStream": "~1.2"
