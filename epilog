@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php namespace Epilog;
+
+include __DIR__ . '/vendor/autoload.php';
+
+set_exception_handler(function($e){
+    echo "\e[0m ", $e->getMessage(), "\n";
+    exit($e->getCode());
+});
+
+$handler = new \Docopt\Handler(array('version'=>'Epilog 0.1'));
+$args = $handler->handle(file_get_contents(__DIR__ . '/spec/epilog'));
+$epilog = new Epilog($args);
+
+if ($args['--pretend']) {
+    $log = new FakeLogTail;
+    $monitor = new FakeMonitor;
+} else {
+    $log = new LogTail($args['<file>']);
+    $monitor = new FileMonitor;
+    $monitor->watch($log->getRealPath(), FileMonitor::CLOSE_WRITE);
+}
+
+$epilog->run($log, $monitor);
