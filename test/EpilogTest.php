@@ -90,6 +90,42 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testDebugInteraction()
+    {
+        $stdin = $this->getStdinMockTemplate()
+                      ->shouldReceive('readLine')->times(4)
+                      ->andReturn('d', 'q', 'd', 'q')
+                      ->getMock();
+        $epilog = $this->getEpilog();
+        $this->assertTrue($this->sandbox($epilog, $stdin)->args()['--debug']);
+        $this->assertFalse($this->sandbox($epilog, $stdin)->args()['--debug']);
+    }
+
+    public function testFilterInteraction()
+    {
+        $stdin = $this->getStdinMockTemplate()
+                      ->shouldReceive('readLine')->times(4)
+                      ->andReturn('/DEBUG/', 'q', '-', 'q')
+                      ->getMock();
+        $epilog = $this->getEpilog();
+        $this->assertEquals('/DEBUG/', $this->sandbox($epilog, $stdin)->args()['--filter']);
+        $this->assertNull($this->sandbox($epilog, $stdin)->args()['--filter']);
+    }
+
+    /**
+     * @expectedException  Epilog\FlowException
+     */
+    public function testThemeInvertInteraction()
+    {
+        $this->expectOutputRegex('#\\e\[7m#');
+        $stdin = $this->getStdinMockTemplate()
+                      ->shouldReceive('readLine')->twice()
+                      ->andReturn('i', 'q')
+                      ->getMock();
+        $this->getEpilog(['--silent' => null])
+             ->run(new FakeLogTail, new FakeMonitor, $stdin);
+    }
+
     protected function getEpilog(array $options = [])
     {
         $args = array_replace_recursive($this->defaults, $options);
