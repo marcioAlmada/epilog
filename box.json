@@ -1,0 +1,32 @@
+{
+    "main": "epilog",
+    "directories": [
+        "src",
+        "spec",
+        "themes",
+        "vendor/composer",
+        "vendor/docopt/docopt/src",
+        "vendor/regex-guard/regex-guard/src",
+        "vendor/igorw/get-in/src"
+    ],
+    "compactors": [
+        "Herrera\\Box\\Compactor\\Json",
+        "Herrera\\Box\\Compactor\\Php"
+    ],
+    "compression": "GZ",
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": [
+                "Tests"
+            ],
+            "in": "vendor/symfony/yaml/Symfony/Component/Yaml"
+        }
+    ],
+    "files": [
+        "LICENSE",
+        "vendor/autoload.php"
+    ],
+    "output": "dist/epilog.phar",
+    "stub": true
+}
