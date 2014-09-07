@@ -1,0 +1,29 @@
+name: Sunrise
+author: Márcio Almada
+theme:
+    # the theme to inherit properties
+    extends: sunset
+
+    # style to be applied at line start (ANSI escaped seq or literal string)
+    prepend: "\e[038;5;237m"
+
+    # level section
+    level:
+        DEBUG:
+            prepend: "\e[048;5;189m -        "
+        INFO:
+            prepend: "\e[048;5;153m --       "
+        NOTICE:
+            prepend: "\e[048;5;225m ---      "
+        WARNING:
+            prepend: "\e[048;5;224m ----     "
+        ERROR:
+            prepend: "\e[048;5;223m -----    "
+        CRITICAL:
+            prepend: "\e[048;5;222m ------   "
+        ALERT:
+            prepend: "\e[048;5;221m -------  "
+        EMERGENCY:
+            prepend: "\e[048;5;220m -------- "
+        DEFAULT:
+            prepend: "\e[048;5;184m -------- "

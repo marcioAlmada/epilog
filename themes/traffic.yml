@@ -1,0 +1,42 @@
+name: Traffic
+author: Márcio Almada
+theme:
+    extends: default
+
+    # the log line template
+    template: "{date} {logger} # {level} # {message} [{context}] [{extra}]"
+
+    # level section
+    level:
+        padding: 10
+        pad-type: STR_PAD_BOTH
+        DEBUG:
+            prepend: "        | "
+            append:  " |        "
+        INFO:
+            prepend: "       |  "
+            append:  "  |       "
+        NOTICE:
+            prepend: "      |   "
+            append:  "   |      "
+        WARNING:
+            prepend: "     |    "
+            append:  "    |     "
+        ERROR:
+            prepend: "    |     "
+            append:  "     |    "
+        CRITICAL:
+            prepend: "   |      "
+            append:  "      |   "
+        ALERT:
+            prepend: "  |       "
+            append:  "       |  "
+        EMERGENCY:
+            prepend: " |        "
+            append:  "        | "
+        DEFAULT:
+            prepend: "          "
+            append:
+
+    date:
+        format: H:i:s

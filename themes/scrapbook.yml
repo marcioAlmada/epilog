@@ -1,0 +1,12 @@
+name: Minial
+author: Márcio Almada
+theme:
+    extends: default
+    # the line template
+    template: "\n [{date}] [{logger}.{level}]\n Message:{message}\n Context:{context}\n Extra:{extra}\n"
+    append: "\n=================================================================================\n"
+    level:
+        pad: 0
+    #date section
+    date:
+        format: "H:i:s"

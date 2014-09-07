@@ -1,0 +1,31 @@
+name: Amazônia
+author: Márcio Almada
+theme:
+    extends: default
+    # the line template
+    template: "{level} ▴ {date} ▴ {message} [{logger}] [{context}] [{extra}]"
+
+    # padding compensation in case of ANSI escaped characters
+    compensation: 13
+
+    # level section
+    level:
+        DEBUG:
+            prepend: "\e[038;05;072m ▴         "
+        INFO:
+            prepend: "\e[038;05;072m ▴ ▴       "
+        NOTICE:
+            prepend: "\e[038;05;072m ▴▴  ▴     "
+        WARNING:
+            prepend: "\e[038;05;035m ▴▴ ▴  ▴   "
+        ERROR:
+            prepend: "\e[038;05;035m ▴▴▴  ▴▴   "
+        CRITICAL:
+            prepend: "\e[038;05;035m ▴▴  ▴▴ ▴▴ "
+        ALERT:
+            prepend: "\e[038;05;029m ▴▴▴  ▴▴▴▴ "
+        EMERGENCY:
+            prepend: "\e[038;05;029m ▴▴ ▴▴▴▴▴▴ "
+            append:
+        DEFAULT:
+            prepend: "\e[038;05;029m .  . .. ."

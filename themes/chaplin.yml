@@ -1,0 +1,41 @@
+name: Chaplin
+author: Márcio Almada
+theme:
+    extends: default
+
+    # the log line template
+    template: "{level} {date} {message} [{logger}] [{context}] [{extra}]"
+
+    # literal string that will be prepended to entire line
+    prepend: "\e[0m"
+
+    # literal string that will be appended to entire line
+    append: "\n"
+
+    compensation: 24
+
+    # level section
+    level:
+        DEBUG:
+            prepend: "\e[048;5;255m\e[038;5;235m "
+        INFO:
+            prepend: "\e[048;5;255m\e[038;5;235m "
+        NOTICE:
+            prepend: "\e[048;5;255m\e[038;5;235m "
+        WARNING:
+            prepend: "\e[048;5;255m\e[038;5;235m "
+        ERROR:
+            prepend: "\e[048;5;235m\e[038;5;255m "
+        CRITICAL:
+            prepend: "\e[048;5;235m\e[038;5;255m "
+        ALERT:
+            prepend: "\e[048;5;235m\e[038;5;255m "
+        EMERGENCY:
+            prepend: "\e[048;5;235m\e[038;5;255m "
+        DEFAULT:
+            prepend: "\e[048;5;235m\e[038;5;255m "
+
+    # message segent
+    message:
+        prepend: '"'
+        append: '"'

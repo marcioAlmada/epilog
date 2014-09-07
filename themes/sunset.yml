@@ -1,0 +1,44 @@
+name: Sunset
+author: Márcio Almada <marcio3w@gmail.com>
+theme:
+    # the theme to inherit properties
+    extends: default
+
+    # the line template
+    template: "{level} {date} {message} [{logger}] [{context}] [{extra}]"
+
+    # style to be applied at line start (ANSI escaped seq or literal string)
+    prepend: "\e[038;5;15m"
+
+    # padding to compensate ANSI escaped characters
+    compensation: 12
+
+    # level section
+    level:
+        DEBUG:
+            prepend: "\e[048;5;099m -        "
+            append:
+        INFO:
+            prepend: "\e[048;5;135m --       "
+            append:
+        NOTICE:
+            prepend: "\e[048;5;171m ---      "
+            append:
+        WARNING:
+            prepend: "\e[048;5;207m ----     "
+            append:
+        ERROR:
+            prepend: "\e[048;5;206m -----    "
+            append:
+        CRITICAL:
+            prepend: "\e[048;5;205m ------   "
+            append:
+        ALERT:
+            prepend: "\e[048;5;204m -------  "
+            append:
+        EMERGENCY:
+            prepend: "\e[048;5;203m -------- "
+            append:
+        DEFAULT:
+            prepend: "\e[048;5;167m -------- "
+            append:

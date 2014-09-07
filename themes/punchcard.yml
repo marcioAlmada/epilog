@@ -1,0 +1,35 @@
+name: Punched Card
+author: Márcio Almada
+theme:
+    extends: default
+
+    # the log line template
+    template: "{level} {date} {message} [{logger}] [{context}] [{extra}]"
+
+    # literal string that will be prepended to entire line
+    prepend: ""
+
+    # literal string that will be appended to entire line
+    append: "\e[0m\n"
+
+    # level section
+    level:
+        padding: 10
+        DEBUG:
+            prepend: "        • \e[2m"
+        INFO:
+            prepend: "       •  \e[2m"
+        NOTICE:
+            prepend: "      •   \e[2m"
+        WARNING:
+            prepend: "     •    \e[2m"
+        ERROR:
+            prepend: "    •     \e[1m"
+        CRITICAL:
+            prepend: "   •      \e[1m"
+        ALERT:
+            prepend: "  •       \e[1m"
+        EMERGENCY:
+            prepend: " •        \e[1m"
+        DEFAULT:
+            prepend: " -------- \e[1m"
