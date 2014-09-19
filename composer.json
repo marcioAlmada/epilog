@@ -1,6 +1,6 @@
 {
     "name": "epilog/epilog",
-    "description": "Epilog is the cli Monolog viewer with style",
+    "description": "Epilog is a CLI log viewer with style",
     "authors": [
         {
             "name": "Márcio Almada",
@@ -12,6 +12,9 @@
             "Epilog\\": "src/"
         }
     },
+    "bin": [
+        "epilog"
+    ],    
     "require": {
         "ext-inotify": "*",
         "docopt/docopt": "0.6.0",
