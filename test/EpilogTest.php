@@ -90,6 +90,17 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testThemeInteraction()
+    {
+        $stdin = $this->getStdinMockTemplate()
+                      ->shouldReceive('readLine')->times(2)
+                      ->andReturn('3', 'q')
+                      ->getMock();
+        $epilog = $this->getEpilog();
+
+        $this->assertEquals($epilog::$themes['3'], $this->sandbox($epilog, $stdin)->args()['--theme']);
+    }
+
     public function testDebugInteraction()
     {
         $stdin = $this->getStdinMockTemplate()
