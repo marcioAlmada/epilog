@@ -1,9 +1,10 @@
-Epilog
-======
+<h1 align="center">
+  <img alt="Epilog" align="center" src="https://dl.dropboxusercontent.com/u/49549530/epilog/epilog-logo.png">
+</h1>
 
-Epilog is a Monolog (PSR-3 log) viewer with style. Watch:
+The lightweight, themeable and interactive PSR-3 log viewer. Monitor monologs with style:
 
-[![punchcard theme](https://dl.dropboxusercontent.com/u/49549530/epilog/asciinema.png)](https://asciinema.org/a/12309)
+[![asciinema](https://dl.dropboxusercontent.com/u/49549530/epilog/asciinema.png)](https://asciinema.org/a/12309?autoplay=true)
 
 ## Install
 
@@ -78,17 +79,13 @@ name: Punched Card
 author: Márcio Almada
 theme:
     extends: default
-
     # the log line template
     # template tags are: {date}, {level}, {logger}, {message}, {context}, {extra}
     template: "{level} {date} {message} [{logger}] [{context}] [{extra}]"
-
     # literal string that will be prepended to entire line
     prepend: ""
-
     # literal string that will be appended to entire line
     append: "\e[0m\n"
-
     # level section
     level:
         padding: 10
@@ -119,11 +116,11 @@ Which will make log lines look like the following, when interpreted:
 ## Roadmap
 
 - [x] Basic functionalities
+- [ ] Add `--app` to allow easy framework integration. Ex: `epilog --app laravel`
 - [ ] Add `--listen` option to aggretate log entries through a REST API. Ex: `epilog --listen 3000`
 - [ ] Add `--server` to view logs in a browser instead of terminal `epilog <file> --server`
-- [ ] Add `--app` to allow easy framework integration. Ex: `epilog --app laravel`
-- [ ] Bother with windows ... anyone?
 - [ ] Add more themes, better theme support, etc
+- [ ] Bother with windows ... anyone?
 - [ ] Other cool things, probably
 - [ ] Release stable version
 
