@@ -4,7 +4,6 @@ namespace Epilog;
 
 use Epilog\Interfaces\MonitorInterface;
 use InvalidArgumentException;
-use ErrorException;
 
 class FileMonitor implements MonitorInterface
 {
@@ -71,11 +70,6 @@ class FileMonitor implements MonitorInterface
 
     public function read()
     {
-        // $read = array($this->handler);
-        // $write = null;
-        // $except = null;
-        // stream_select($read, $write, $except, 0);
-        // stream_set_blocking($this->handler, 0);
         if($this->getQueue())
 
             return inotify_read($this->handler);

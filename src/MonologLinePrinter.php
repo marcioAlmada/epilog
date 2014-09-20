@@ -28,7 +28,6 @@ class MonologLinePrinter implements PrinterInterface
         $raw = trim($raw);
         if(empty($raw)) return;
         $line = '';
-        $columns = exec('tput cols');
         $data = $this->parser->parse($raw);
         $line = $raw . "\n";
         if ($data) {
@@ -53,6 +52,7 @@ class MonologLinePrinter implements PrinterInterface
                         $this->getScreenWidth()  + $this->theme->{'compensation'})
                     . $this->theme->{'append'};
         }
+
         return $this->clearLine() . $line;
     }
 

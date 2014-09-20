@@ -162,7 +162,7 @@ class Epilog
         usleep($this->sleep * 1000000);
     }
 
-    protected function loadPrinter($theme = false)
+    protected function loadPrinter()
     {
         $themeFile = __DIR__ . '/../themes/'. $this->args['--theme'] . '.yml';
 

@@ -3,7 +3,6 @@
 namespace Epilog;
 
 use Epilog\Interfaces\TailInterface;
-use Faker\Factory as Faker;
 use DateTime;
 
 class FakeLogTail implements TailInterface
@@ -123,12 +122,11 @@ class FakeLogTail implements TailInterface
         $allKeys = array_keys($array);
         $numKeys = count($allKeys);
         $highKey = $numKeys - 1;
-        $keys = $elements = array();
+        $elements = array();
         $numElements = 0;
 
         while ($numElements < $count) {
             $num = mt_rand(0, $highKey);
-            $keys[$num] = true;
             $elements[] = $array[$allKeys[$num]];
             $numElements++;
         }
