@@ -27,7 +27,6 @@ class MonologLinePrinter implements PrinterInterface
     {
         $raw = trim($raw);
         if(empty($raw)) return;
-        $line = '';
         $data = $this->parser->parse($raw);
         $line = $raw . "\n";
         if ($data) {

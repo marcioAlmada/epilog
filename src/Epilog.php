@@ -21,6 +21,20 @@ class Epilog
         7 => 'traffic',
     ];
 
+    /**
+     * Epilog command line args container
+     *
+     * @var \Docopt\Response
+     */
+    protected $args;
+
+    /**
+     * Input reader
+     *
+     * @var \Epilog\Interfaces\StreamReaderInterface
+     */
+    protected $stdin;
+
     protected $printer;
 
     protected $ticker;
@@ -28,7 +42,7 @@ class Epilog
     /**
      * Screen update interval in useconds
      *
-     * @var integer
+     * @var double
      */
     protected $sleep;
 
