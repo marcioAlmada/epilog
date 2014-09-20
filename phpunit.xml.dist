@@ -26,26 +26,26 @@
     <logging>
         <log
             type="tap"
-            target="tmp/logs/report.tap"
+            target="build/logs/report.tap"
         />
         <log
             type="junit"
-            target="tmp/logs/report.junit.xml"
+            target="build/logs/report.junit.xml"
         />
         <log
             type="coverage-html"
-            target="tmp/logs/coverage"
+            target="build/logs/coverage"
             charset="UTF-8"
             yui="true"
             highlight="true"
         />
         <log
             type="coverage-text"
-            target="tmp/logs/coverage.txt"
+            target="build/logs/coverage.txt"
         />
         <log
             type="coverage-clover"
-            target="tmp/logs/clover.xml"
+            target="build/logs/clover.xml"
         />
     </logging>
 </phpunit>
