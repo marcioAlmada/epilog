@@ -2,6 +2,14 @@
   <img alt="Epilog" align="center" src="https://dl.dropboxusercontent.com/u/49549530/epilog/epilog-logo.png">
 </h1>
 
+[![Build Status][t-badge]][t-link]
+[![Coverage Status][c-badge]][c-link]
+[![Scrutinizer Quality Score][s-badge]][s-link]
+[![Latest Stable Version][v-badge]][p-link]
+[![Total Downloads][d-badge]][p-link]
+[![License][l-badge]][p-link]
+[![SensioLabsInsight][sl-badge]][sl-link]
+
 The lightweight, themeable and interactive PSR-3 log viewer. Monitor monologs with style:
 
 [![asciinema](https://dl.dropboxusercontent.com/u/49549530/epilog/asciinema.png)](https://asciinema.org/a/12309?autoplay=true)
@@ -141,3 +149,17 @@ Found a bug? Have an improvement? Take a look at the [issues](https://github.com
 
 Copyright (c) 2014 Márcio Almada. Distributed under the terms of an MIT-style license.
 See LICENSE for details.
+
+[t-link]: https://travis-ci.org/marcioAlmada/epilog "Travis Build"
+[c-link]: https://coveralls.io/r/marcioAlmada/epilog?branch=master "Code Coverage"
+[s-link]: https://scrutinizer-ci.com/g/marcioAlmada/epilog/?branch=master "Code Quality"
+[p-link]: https://packagist.org/packages/marc/epilog "Packagist"
+[sl-link]: https://insight.sensiolabs.com/projects/02d1fd01-8a70-4fe4-a550-381a3c0e33f3 "Sensiolabs Insight"
+
+[t-badge]: https://travis-ci.org/marcioAlmada/epilog.png?branch=master
+[c-badge]: https://coveralls.io/repos/marcioAlmada/epilog/badge.png?branch=master
+[s-badge]: https://scrutinizer-ci.com/g/marcioAlmada/epilog/badges/quality-score.png?b=master
+[v-badge]: https://poser.pugx.org/marc/epilog/v/stable.png
+[d-badge]: https://poser.pugx.org/marc/epilog/downloads.png
+[l-badge]: https://poser.pugx.org/marc/epilog/license.png
+[sl-badge]: https://insight.sensiolabs.com/projects/02d1fd01-8a70-4fe4-a550-381a3c0e33f3/mini.png
