@@ -12,21 +12,13 @@
 
 The lightweight, themeable and interactive PSR-3 log viewer. Monitor monologs with style:
 
-[![asciinema](https://dl.dropboxusercontent.com/u/49549530/epilog/asciinema.png)](https://asciinema.org/a/12309?autoplay=true)
+[![asciinema](https://dl.dropboxusercontent.com/u/49549530/epilog/asciinema.png)](https://asciinema.org/a/12309?autoplay=true&speed=1.5)
 
 ## Install
 
 :bomb: Not ready to rumble yet. Try at your own risk!
 
-```
-git clone https://github.com/marcioAlmada/epilog.git
-cd epilog
-composer install
-make
-sudo make install
-```
-
-Or as a composer dependency:
+As a composer project dependency:
 
 ```json
 {
@@ -36,11 +28,28 @@ Or as a composer dependency:
 }
 ```
 
-### Quick test.
+As a composer global package:
+
+```bash
+composer global require marc/epilog:dev-master
+```
+
+Or build the phar yourself:
+
+```bash
+# install box2 -> https://github.com/box-project/box2
+git clone https://github.com/marcioAlmada/epilog.git
+cd epilog
+composer install
+make # phar will available at dist/ folder
+sudo make install # will put epilog at /usr/local/bin/ folder
+```
+
+### Quick test
 
 Run **epilog** with `--pretend` option and tail a fake log stream. Check if output looks good:
 
-```
+```bash
 epilog . --pretend
 ```
 
@@ -48,7 +57,7 @@ epilog . --pretend
 
 Basic usage is:
 
-```
+```bash
 epilog /path/to/monolog/file.log
 ```
 
@@ -78,9 +87,9 @@ Epilog is still pre alpha. A more detailed manual will be added soon.
 
 ## Themes
 
-Epilog themes are very simple `yml` files with hooks where you can put ANSI codes.
-Those hooks will decorate a log line template and [nyancatyze](http://youtu.be/QH2-TGUlwu4)
-your PSR-3 logs. Here is a theme example:
+Epilog themes are very simple `yml` files with hooks where you can put ANSI color escape sequences and literal text.
+Those hooks will decorate a log line template and [nyancatyze](http://youtu.be/QH2-TGUlwu4) log lines.
+Here is a theme example:
 
 ```yaml
 name: Punched Card
