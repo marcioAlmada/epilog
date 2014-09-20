@@ -5,9 +5,9 @@ Epilog is a Monolog (PSR-3 log) viewer with style. Watch:
 
 [![punchcard theme](https://dl.dropboxusercontent.com/u/49549530/epilog/asciinema.png)](https://asciinema.org/a/12309)
 
-:bomb: Not ready to rumble yet. Try at your own risk!
-
 ## Install
+
+:bomb: Not ready to rumble yet. Try at your own risk!
 
 ```
 git clone https://github.com/marcioAlmada/epilog.git
@@ -22,7 +22,7 @@ Or as a composer dependency:
 ```json
 {
     "require": {
-        "epilog/epilog": "dev-master"
+        "marc/epilog": "dev-master"
     }
 }
 ```
@@ -35,8 +35,6 @@ Run **epilog** with `--pretend` option and tail a fake log stream. Check if outp
 epilog . --pretend
 ```
 
-Try hitting `[return]` key to see interactive menu :)
-
 ## Usage
 
 Basic usage is:
@@ -45,7 +43,7 @@ Basic usage is:
 epilog /path/to/monolog/file.log
 ```
 
-While epilog is monitoring the log file (or the fake stream), hit `[return]` to see a nice interactive menu:
+While epilog is monitoring the log file (or a fake stream), hit `[return]` to see a nice interactive menu:
 
 ```
 $ [ ⏎ ]
@@ -65,8 +63,6 @@ Woot! Epilog here. Please type a theme number, a valid regexp or a valid flag:
 [ c ] clear screen.
 [ - ] reset regexp filter.
 [ q ] quit.
-
-[ ⏎ ] # 
 ```
 
 Epilog is still pre alpha. A more detailed manual will be added soon.
@@ -116,20 +112,20 @@ theme:
             prepend: " -------- \e[1m"
 ```
 
-Which will make log lines look like this when interpreted:
+Which will make log lines look like the following, when interpreted:
 
 ![punchcard theme](https://dl.dropboxusercontent.com/u/49549530/epilog/punchcard.png)
 
 ## Roadmap
 
-- [x] Basic functionalities;
-- [ ] Add `--listen` option to aggretate log entries through a REST API. Ex: `epilog --listen 3000`;
-- [ ] Add `--server` to view logs in a browser instead of terminal `epilog <file> --server`;
-- [ ] Add `--app` to allow easy framework integration. Ex: `epilog --app laravel`;
+- [x] Basic functionalities
+- [ ] Add `--listen` option to aggretate log entries through a REST API. Ex: `epilog --listen 3000`
+- [ ] Add `--server` to view logs in a browser instead of terminal `epilog <file> --server`
+- [ ] Add `--app` to allow easy framework integration. Ex: `epilog --app laravel`
 - [ ] Bother with windows ... anyone?
-- [ ] Add more themes, better theme support, etc;
-- [ ] Other cool things, probably;
-- [ ] Release stable version;
+- [ ] Add more themes, better theme support, etc
+- [ ] Other cool things, probably
+- [ ] Release stable version
 
 ## Contributions
 
@@ -137,7 +133,7 @@ Found a bug? Have an improvement? Take a look at the [issues](https://github.com
 
 ### Guide
  
-0. Fork [epilog\epilog](https://github.com/marcioAlmada/epilog/fork)
+0. Fork [marc/epilog](https://github.com/marcioAlmada/epilog/fork)
 0. Clone forked repository
 0. Install composer dependencies `$ composer install`
 0. Run unit tests `$ phpunit`

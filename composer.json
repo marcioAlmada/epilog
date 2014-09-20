@@ -1,6 +1,8 @@
 {
-    "name": "epilog/epilog",
+    "name": "marc/epilog",
     "description": "Epilog is a CLI log viewer with style",
+    "keywords": ["log", "viewer"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Márcio Almada",
