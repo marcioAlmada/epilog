@@ -7,9 +7,14 @@ php:
   # - hhvm
 
 before_script:
+  - pecl install inotify
+  - curl https://phar.phpunit.de/phpunit-alpha.phar > phpunit && chmod +x phpunit
   - composer self-update
   - composer require satooshi/php-coveralls:dev-master --no-update --dev
   - composer install --prefer-source
+
+script:
+    - ./phpunit
 
 after_script:
   - php vendor/bin/coveralls
