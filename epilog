@@ -1,7 +1,12 @@
 #!/usr/bin/env php
 <?php namespace Epilog;
 
-include __DIR__ . '/vendor/autoload.php';
+foreach (array(__DIR__ . '/vendor/autoload.php', __DIR__ . '/../autoload.php', __DIR__ . '/../../autoload.php') as $file) {
+    if (file_exists($file)) {
+        include($file);
+        break;
+    }
+}
 
 set_exception_handler(function($e){
     echo "\e[0m ", $e->getMessage(), "\n";
