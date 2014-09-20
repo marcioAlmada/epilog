@@ -39,11 +39,7 @@ class FakeLogTail implements TailInterface
         'dolores', 'et', 'quas', 'molestias', 'excepturi', 'sint'
     );
 
-    /**
-     * Just a method passtru
-     *
-     */
-    public function __call($method, $args) {}
+    public function seekLastLineRead(){}
 
     public function fgets()
     {

@@ -7,4 +7,5 @@ interface TailInterface
     public function fgets();
     public function eof();
     public function getRealPath();
+    public function seekLastLineRead();
 }
