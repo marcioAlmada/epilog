@@ -11,7 +11,7 @@ before_script:
   - curl https://phar.phpunit.de/phpunit-alpha.phar > phpunit && chmod +x phpunit
   - composer self-update
   - composer require satooshi/php-coveralls:dev-master --no-update --dev
-  - composer install --prefer-source
+  - composer install --dev --prefer-source
 
 script:
     - ./phpunit
