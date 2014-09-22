@@ -47,7 +47,7 @@ class FakeLogTail implements TailInterface
         $date = (new DateTime)->format('Y-m-d H:i:s');
         $message = self::sentence(rand(5, 10));
 
-        return "[{$date}] log.{$level}: {$message} {} {}";
+        return "[{$date}] log.{$level}: {$message} [] []";
     }
 
     public function eof()
