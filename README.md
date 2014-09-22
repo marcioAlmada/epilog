@@ -88,8 +88,8 @@ Epilog is still pre alpha. A more detailed manual will be added soon.
 ## Themes
 
 Epilog themes are very simple `yml` files with hooks where you can put ANSI color escape sequences and literal text.
-Those hooks will decorate a log line template and [nyancatyze](http://youtu.be/QH2-TGUlwu4) log lines.
-Here is a theme example:
+The hooks will decorate each log line, [nyancatyze](http://youtu.be/QH2-TGUlwu4) your terminal
+and sometimes [puke rainbows](http://youtu.be/-Cec2iAgW1Q). Here is a theme example:
 
 ```yaml
 name: Punched Card
