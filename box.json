@@ -3,6 +3,7 @@
     "directories": [
         "src",
         "spec",
+        "commands",
         "themes",
         "vendor/composer",
         "vendor/docopt/docopt/src",
@@ -25,6 +26,7 @@
     ],
     "files": [
         "LICENSE",
+        "bootstrap.php",
         "vendor/autoload.php"
     ],
     "output": "dist/epilog.phar",
