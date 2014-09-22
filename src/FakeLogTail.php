@@ -11,7 +11,7 @@ class FakeLogTail implements TailInterface
 
     protected $eof = true;
 
-    static $levels = [
+    protected static $levels = [
         'DEBUG', 'INFO', 'NOTICE', 'DEBUG', 'INFO', 'NOTICE', 'WARNING',
         'DEBUG', 'INFO', 'NOTICE', 'WARNING', 'ERROR', 'CRITICAL', 'ALERT',
         'EMERGENCY', 'ERROR'
@@ -43,7 +43,7 @@ class FakeLogTail implements TailInterface
 
     public function fgets()
     {
-        $level = static::$levels[array_rand(static::$levels)];
+        $level = self::$levels[array_rand(self::$levels)];
         $date = (new DateTime)->format('Y-m-d H:i:s');
         $message = self::sentence(rand(5, 10));
 
@@ -72,7 +72,7 @@ class FakeLogTail implements TailInterface
     {
         $words = array();
         for ($i=0; $i < $nb; $i++) {
-            $words []= static::randomElement(static::$wordList);
+            $words []= static::randomElement(self::$wordList);
         }
 
         return $asText ? join(' ', $words) : $words;
