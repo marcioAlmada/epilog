@@ -27,5 +27,6 @@
     "require-dev": {
         "mikey179/vfsStream": "~1.2",
         "mockery/mockery": "dev-master"
-    }
+    },
+    "minimum-stability": "dev"
 }

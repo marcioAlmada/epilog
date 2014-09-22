@@ -4,24 +4,27 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "54f9566bdfeeeaf00b24d7b5f0ead608",
+    "hash": "2e1205a6f369b924b23c8491c2394297",
     "packages": [
         {
             "name": "docopt/docopt",
-            "version": "0.6.0",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/docopt/docopt.php.git",
-                "reference": "ad2afba96771ab5d8c29c36d720461886b338d78"
+                "reference": "0832f2fa33ada03601bae19127624e2c6de2b035"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/docopt/docopt.php/zipball/ad2afba96771ab5d8c29c36d720461886b338d78",
-                "reference": "ad2afba96771ab5d8c29c36d720461886b338d78",
+                "url": "https://api.github.com/repos/docopt/docopt.php/zipball/0832f2fa33ada03601bae19127624e2c6de2b035",
+                "reference": "0832f2fa33ada03601bae19127624e2c6de2b035",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*"
             },
             "type": "library",
             "autoload": {
@@ -47,11 +50,11 @@
                 "cli",
                 "docs"
             ],
-            "time": "2013-01-24 10:17:13"
+            "time": "2014-08-19 23:25:38"
         },
         {
             "name": "igorw/get-in",
-            "version": "v1.0.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/igorw/get-in.git",
@@ -190,7 +193,7 @@
     "packages-dev": [
         {
             "name": "mikey179/vfsStream",
-            "version": "v1.4.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikey179/vfsStream.git",
@@ -294,8 +297,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
+        "docopt/docopt": 20,
         "mockery/mockery": 20
     },
     "prefer-stable": false,

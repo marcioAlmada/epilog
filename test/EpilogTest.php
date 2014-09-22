@@ -158,7 +158,6 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
         try {
             $epilog->run(new FakeLogTail, new FakeMonitor, $stdin);
         } catch (\Epilog\FlowException $e) {
-
           return $epilog;
         }
         $this->fail('Epilog console did not quit ptoperly');
