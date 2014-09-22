@@ -47,10 +47,10 @@ sudo make install # will put epilog at /usr/local/bin/ folder
 
 ### Quick test
 
-Run **epilog** with `--pretend` option and tail a fake log stream. Check if output looks good:
+Run **epilog** `pretend` command and tail a fake log stream. Check if output looks good:
 
 ```bash
-epilog . --pretend
+epilog pretend
 ```
 
 ## Usage
@@ -58,7 +58,7 @@ epilog . --pretend
 Basic usage is:
 
 ```bash
-epilog /path/to/monolog/file.log
+epilog watch /path/to/monolog/file.log [<args>]...
 ```
 
 While epilog is monitoring the log file (or a fake stream), hit `[return]` to see a nice interactive menu:
@@ -133,10 +133,10 @@ Which will make log lines look like the following, when interpreted:
 ## Roadmap
 
 - [x] Basic functionalities
-- [ ] Add `--app` to allow easy framework integration. Ex: `epilog --app laravel`
-- [ ] Add `--listen` option to aggretate log entries through a REST API. Ex: `epilog --listen 3000`
-- [ ] Add `--server` to view logs in a browser instead of terminal `epilog <file> --server`
-- [ ] Add more themes, better theme support, etc
+- [ ] Add `--app` option to allow easy framework integration. Ex: `epilog <command> --app laravel`
+- [ ] Add `listen` command to aggregate log entries through a REST API. Ex: `epilog listen --port 8888`
+- [ ] Add `server` command to view logs in a browser instead of terminal `epilog server <file> --port 8888`
+- [ ] Add better unicode support, more themes etc
 - [ ] Bother with windows ... anyone?
 - [ ] Other cool things, probably
 - [ ] Release stable version

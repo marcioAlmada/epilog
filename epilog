@@ -1,29 +1,16 @@
 #!/usr/bin/env php
 <?php namespace Epilog;
 
-foreach (array(__DIR__ . '/vendor/autoload.php', __DIR__ . '/../autoload.php', __DIR__ . '/../../autoload.php') as $file) {
-    if (file_exists($file)) {
-        include($file);
-        break;
-    }
-}
+include __DIR__ . '/bootstrap.php';
 
-set_exception_handler(function($e){
-    echo "\e[0m ", $e->getMessage(), "\n";
-    exit($e->getCode());
-});
+$handler = new \Docopt\Handler([
+    'version'=>'Epilog 0.1.1',
+    'optionsFirst' => true
+]);
+$response = $handler->handle(file_get_contents(__DIR__ . '/spec/epilog'));
+$command = __DIR__ . '/commands/' . $response['<command>'] . '.php';
 
-$handler = new \Docopt\Handler(array('version'=>'Epilog 0.1'));
-$args = $handler->handle(file_get_contents(__DIR__ . '/spec/epilog'));
-$epilog = new Epilog($args);
-
-if ($args['--pretend']) {
-    $log = new FakeLogTail;
-    $monitor = new FakeMonitor;
-} else {
-    $log = new LogTail($args['<file>']);
-    $monitor = new FileMonitor;
-    $monitor->watch($log->getRealPath(), FileMonitor::CLOSE_WRITE);
-}
-
-$epilog->run($log, $monitor);
+if(! preg_match('#[a-z\-]#', $command) || ! file_exists($command))
+    throw new FlowException("Command not defined, try epilog --help", 1);
+    
+include $command;

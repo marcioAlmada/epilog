@@ -1,0 +1,11 @@
+Usage:
+    epilog pretend [--filter=<filter>][--sleep-interval=<s>][--theme=<theme>][--theme-invert][--no-follow][--debug]
+
+Options:
+  -f --filter=<filter>     Filter log entries with a given regular expression.
+  -s --sleep-interval=<s>  Sleep interval [default: .5].
+  -t --theme=<theme>       Theme, see `Epilogs themes` to see list the list of themes [default: sunrise].
+  -i --theme-invert        Invert theme foreground vs background colors.
+  -n --no-follow           Print last logged lines and quit.
+  -d --debug               Reloads theme on every loop. Slow, but useful while building new themes.
+  -h --help                Show this screen.
