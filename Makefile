@@ -1,7 +1,7 @@
 COMPILE      = box build
 TARGET       = dist/epilog.phar
 OUTPUT       = dist/epilog
-DELETE_FILE  = rm -f
+DELETE_FILE  = rm
 CHMOD_FILE   = chmod +x
 MOVE_FILE    = mv
 CP_FILE      = cp
@@ -19,7 +19,7 @@ pretend:
 	./$(OUTPUT) . --pretend
 
 clean:
-	$(DEL_FILE) $(OUTPUT)
+	$(DELETE_FILE) $(OUTPUT)
 
 install:
 	$(CP_FILE) $(OUTPUT) $(INSTALL_PATH)
