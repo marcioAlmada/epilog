@@ -19,7 +19,7 @@
     ],    
     "require": {
         "ext-inotify": "*",
-        "docopt/docopt": "0.6.0",
+        "docopt/docopt": "dev-develop",
         "igorw/get-in": "~1.0",
         "symfony/yaml": "2.5.3",
         "regex-guard/regex-guard": "~1.0"
