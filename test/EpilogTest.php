@@ -93,12 +93,27 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
     public function testThemeInteraction()
     {
         $stdin = $this->getStdinMockTemplate()
-                      ->shouldReceive('readLine')->times(2)
-                      ->andReturn('3', 'q')
+                      ->shouldReceive('readLine')->times(4)
+                      ->andReturn('3', 'q', 'r', 'q')
                       ->getMock();
         $epilog = $this->getEpilog();
 
         $this->assertEquals($epilog::$themes['3'], $this->sandbox($epilog, $stdin)->args()['--theme']);
+        $this->sandbox($epilog, $stdin);
+    }
+
+    /**
+     * @expectedException  Epilog\FlowException
+     */
+    public function testThemeInvertInteraction()
+    {
+        $this->expectOutputRegex('#\\e\[7m#');
+        $stdin = $this->getStdinMockTemplate()
+                      ->shouldReceive('readLine')->twice()
+                      ->andReturn('i', 'q')
+                      ->getMock();
+        $this->getEpilog(['--silent' => null])
+             ->run(new FakeLogTail, new FakeMonitor, $stdin);
     }
 
     public function testDebugInteraction()
@@ -121,20 +136,6 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
         $epilog = $this->getEpilog();
         $this->assertEquals('/DEBUG/', $this->sandbox($epilog, $stdin)->args()['--filter']);
         $this->assertNull($this->sandbox($epilog, $stdin)->args()['--filter']);
-    }
-
-    /**
-     * @expectedException  Epilog\FlowException
-     */
-    public function testThemeInvertInteraction()
-    {
-        $this->expectOutputRegex('#\\e\[7m#');
-        $stdin = $this->getStdinMockTemplate()
-                      ->shouldReceive('readLine')->twice()
-                      ->andReturn('i', 'q')
-                      ->getMock();
-        $this->getEpilog(['--silent' => null])
-             ->run(new FakeLogTail, new FakeMonitor, $stdin);
     }
 
     protected function getEpilog(array $options = [])
