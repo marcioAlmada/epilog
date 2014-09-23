@@ -12,13 +12,14 @@ use ErrorException;
 class Epilog
 {
     static $themes = [
-        1 => 'chaplin',
-        2 => 'forest',
-        3 => 'scrapbook',
-        4 => 'punchcard',
-        5 => 'sunset',
-        6 => 'sunrise',
-        7 => 'traffic',
+        1 => 'default',
+        2 => 'chaplin',
+        3 => 'forest',
+        4 => 'scrapbook',
+        5 => 'punchcard',
+        6 => 'sunset',
+        7 => 'sunrise',
+        8 => 'traffic',
     ];
 
     /**
