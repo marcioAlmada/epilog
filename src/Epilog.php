@@ -53,7 +53,6 @@ class Epilog
     public function __construct(Response $args)
     {
         static::checkRequirements();
-
         $this->args = $args;
         $this->sleep  = (float) $args['--sleep-interval'];
         $this->ticker = new Ticker;
@@ -81,7 +80,8 @@ class Epilog
             $this->sleep(); // wait before trigger new iteration
             if($this->args['--debug']) $this->printer = $this->loadPrinter();
             $this->handleInteraction();
-    }}
+        }
+    }
 
     public function args()
     {

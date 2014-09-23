@@ -17,7 +17,7 @@ class FakeLogTail implements TailInterface
         'EMERGENCY', 'ERROR'
     ];
 
-    protected static $wordList = array(
+    protected static $wordList = [
         'alias', 'consequatur', 'aut', 'perferendis', 'sit', 'voluptatem',
         'accusantium', 'doloremque', 'aperiam', 'eaque','ipsa', 'quae', 'ab',
         'illo', 'inventore', 'veritatis', 'et', 'quasi', 'architecto',
@@ -37,7 +37,7 @@ class FakeLogTail implements TailInterface
         'ducimus', 'qui', 'blanditiis', 'praesentium', 'laudantium', 'totam',
         'rem', 'voluptatum', 'deleniti', 'atque', 'corrupti', 'quos',
         'dolores', 'et', 'quas', 'molestias', 'excepturi', 'sint'
-    );
+    ];
 
     public function seekLastLineRead() {}
 
@@ -70,7 +70,7 @@ class FakeLogTail implements TailInterface
      */
     protected static function words($nb = 3, $asText = false)
     {
-        $words = array();
+        $words = [];
         for ($i=0; $i < $nb; $i++) {
             $words []= static::randomElement(self::$wordList);
         }
@@ -109,16 +109,15 @@ class FakeLogTail implements TailInterface
      *
      * @param  array            $array Array to take elements from. Defaults to a-f
      * @param  integer          $count Number of elements to take.
-     * @throws \LengthException When requesting more elements than provided
      *
      * @return array New array with $count elements from $array
      */
-    protected static function randomElements(array $array = array('a', 'b', 'c'), $count = 1)
+    protected static function randomElements(array $array = ['a', 'b', 'c'], $count = 1)
     {
         $allKeys = array_keys($array);
         $numKeys = count($allKeys);
         $highKey = $numKeys - 1;
-        $elements = array();
+        $elements = [];
         $numElements = 0;
 
         while ($numElements < $count) {
@@ -136,7 +135,7 @@ class FakeLogTail implements TailInterface
      * @param  array $array
      * @return mixed
      */
-    protected static function randomElement($array = array('a', 'b', 'c'))
+    protected static function randomElement($array = ['a', 'b', 'c'])
     {
         $elements = static::randomElements($array, 1);
 
