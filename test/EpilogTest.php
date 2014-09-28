@@ -35,7 +35,7 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
     public function testNoFollowOption()
     {
         $this->getEpilog(['--no-follow' => true])
-             ->run(new FakeLogTail, new FakeMonitor);
+             ->run(new FakeLogTail);
     }
 
     /**
@@ -44,7 +44,7 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
     public function testInvalidFilterOption()
     {
         $this->getEpilog(['--filter' => '/bad-regex'])
-             ->run(new FakeLogTail, new FakeMonitor);
+             ->run(new FakeLogTail);
     }
 
     /**
@@ -58,7 +58,7 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
                       ->andReturn('', 'q')
                       ->getMock();
         $epilog = $this->getEpilog();
-        $epilog->run(new FakeLogTail, new FakeMonitor, $stdin);
+        $epilog->run(new FakeLogTail, $stdin);
     }
 
     /**
@@ -72,7 +72,7 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
                       ->andReturn('?', 'q')
                       ->getMock();
         $this->getEpilog(['--silent' => null])
-             ->run(new FakeLogTail, new FakeMonitor, $stdin);
+             ->run(new FakeLogTail, $stdin);
     }
 
     /**
@@ -86,7 +86,7 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
                       ->andReturn('c', 'q')
                       ->getMock();
         $this->getEpilog(['--silent' => null])
-             ->run(new FakeLogTail, new FakeMonitor, $stdin);
+             ->run(new FakeLogTail, $stdin);
 
     }
 
@@ -113,7 +113,7 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
                       ->andReturn('i', 'q')
                       ->getMock();
         $this->getEpilog(['--silent' => null])
-             ->run(new FakeLogTail, new FakeMonitor, $stdin);
+             ->run(new FakeLogTail, $stdin);
     }
 
     public function testDebugInteraction()
@@ -157,7 +157,7 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
     protected function sandbox($epilog, $stdin)
     {
         try {
-            $epilog->run(new FakeLogTail, new FakeMonitor, $stdin);
+            $epilog->run(new FakeLogTail, $stdin);
         } catch (\Epilog\FlowException $e) {
           return $epilog;
         }

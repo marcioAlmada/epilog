@@ -14,7 +14,7 @@ class LogTail extends SplFileObject implements TailInterface
         parent::__construct($filename, 'r');
         $this->setFlags(self::SKIP_EMPTY);
         $lineCount = $this->getLineCount();
-        $this->index = ($lineCount > 11) ? ($lineCount - 11) : $lineCount;
+        $this->index = ($lineCount > 10) ? ($lineCount - 10) : $lineCount;
     }
 
     public function seekLastLineRead()

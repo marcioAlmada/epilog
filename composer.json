@@ -18,7 +18,6 @@
         "epilog"
     ],    
     "require": {
-        "ext-inotify": "*",
         "docopt/docopt": "dev-develop",
         "igorw/get-in": "~1.0",
         "symfony/yaml": "2.5.3",

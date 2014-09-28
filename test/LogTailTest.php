@@ -2,8 +2,6 @@
 
 namespace Epilog;
 
-use org\bovigo\vfs\vfsStream as Vfs;
-
 /**
  * LogTailTest
  *
@@ -12,24 +10,79 @@ use org\bovigo\vfs\vfsStream as Vfs;
 class LogTailTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $tail;
-
-    protected $log;
+    protected $fixture;
 
     public function setUp()
     {
-        $dir = Vfs::setup('logs');
-        $this->log = Vfs::newFile('fake.log')->at($dir)->withContent(
-            "line 1\nline 2\n"
-        );
-        $this->tail = new LogTail($this->log->url());
+        $this->fixture = tempnam(sys_get_temp_dir(), 'epilog-');
     }
 
-    public function testLogTail()
+    public function testLogTailWithEmptyFile()
     {
-        $this->tail->seekLastLineRead();
-        $this->assertTrue($this->tail->eof());
-        file_put_contents($this->log->url(), "line 3\n", FILE_APPEND);
-        $this->assertTrue($this->tail->eof());
+        $log = new LogTail($this->fixture, 'r');
+        $this->assertEquals(0, $log->key());
+        $log->seekLastLineRead();
+        $this->assertEquals(0, $log->key());
+        $this->assertEquals('', $log->fgets());
+        $this->assertEquals(0, $log->key());
+        $this->assertTrue($log->eof());
+    }
+
+    public function testLogTailWithShortFile()
+    {
+        $this->growLog("line {i}", 3);
+        $log = new LogTail($this->fixture, 'r');
+        $log->seekLastLineRead();
+        $this->assertEquals(3, $log->key());
+        $this->assertTrue($log->eof());
+    }
+
+    public function testLogTailWithLongerFile()
+    {
+        $this->growLog("line {i}", 11);
+        $log = new LogTail($this->fixture, 'r');
+        $log->seekLastLineRead();
+        $this->assertEquals(1, $log->key());
+        $log->fgets();
+        $log->fgets();
+        $log->fgets();
+        $log->fgets();
+        $log->fgets();
+        $log->fgets();
+        $log->fgets();
+        $log->fgets();
+        $this->assertEquals("line 10\n", $log->fgets());
+        $this->assertEquals('', $log->fgets());
+        $this->assertTrue($log->eof());
+        
+        $this->growLog('bump!');
+        $log->seekLastLineRead();
+        $this->assertFalse($log->eof());
+        $this->assertEquals("bump!\n", $log->fgets());
+        $this->assertEquals('', $log->fgets());
+        $this->assertTrue($log->eof());
+    }
+
+    public function testLogTailWhenFileIsTruncated()
+    {
+        $this->growLog("line {i}", 100);
+        $log = new LogTail($this->fixture, 'r');
+        $log->seekLastLineRead();
+        $this->assertEquals(90, $log->key());
+        $this->truncateLog();
+        $log->seekLastLineRead();
+        $this->assertEquals(1, $log->key());
+    }
+
+    protected function growLog($text, $times = 1)
+    {
+        for ($i=0; $i < $times; $i++)
+            file_put_contents(
+                $this->fixture, str_replace('{i}', $i, $text) . "\n", FILE_APPEND);
+    }
+
+    protected function truncateLog()
+    {
+        file_put_contents($this->fixture, "\n");
     }
 }

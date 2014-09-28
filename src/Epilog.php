@@ -53,7 +53,6 @@ class Epilog
 
     public function __construct(Response $args)
     {
-        static::checkRequirements();
         $this->args = $args;
         $this->sleep  = (float) $args['--sleep-interval'];
         $this->ticker = new Ticker;
@@ -61,20 +60,18 @@ class Epilog
         $this->regexGuard = RegexGuard::getGuard();
     }
 
-    public function run(TailInterface $log, MonitorInterface $logMonitor, StreamReaderInterface $stdin = null)
+    public function run(TailInterface $log, StreamReaderInterface $stdin = null)
     {
         $this->stdin = $stdin ?: new InputReader;
         $this->stdin->block(false);
         while (true) {
-            if (! $this->loop++ || $logMonitor->read()) {
-                $log->seekLastLineRead();
-                while (! $log->eof()) {
-                    $line = $log->fgets();
-                    $filter = $this->args['--filter'];
-                    if (! empty($filter))
-                        if(! $this->regexGuard->match($filter, $line)) continue;
-                    $this->output($this->printer->format($line));
-                }
+            $log->seekLastLineRead();
+            while (! $log->eof()) {
+                $line = $log->fgets();
+                $filter = $this->args['--filter'];
+                if (! empty($filter))
+                    if(! $this->regexGuard->match($filter, $line)) continue;
+                $this->output($this->printer->format($line));
             }
             if($this->args['--no-follow']) $this->quit();
             $this->output($this->status($log->getRealPath()));
@@ -189,12 +186,6 @@ class Epilog
     {
         $this->args['--theme'] = self::$themes[array_rand(self::$themes)];
         $this->printer = $this->loadPrinter();
-    }
-
-    public static function checkRequirements()
-    {
-        if (! extension_loaded('inotify'))
-            throw new ErrorException('Missing PHP ext inotify.', 1);
     }
 
 }
