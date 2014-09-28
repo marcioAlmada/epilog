@@ -2,9 +2,9 @@
 
 namespace Epilog;
 
-use Epilog\Interfaces\StreamReaderInterface;
+use Epilog\Interfaces\InputReaderInterface;
 
-class InputReader implements StreamReaderInterface
+class InputReader implements InputReaderInterface
 {
     protected $resource;
 

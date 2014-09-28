@@ -147,7 +147,7 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
 
     protected function getStdinMockTemplate()
     {
-        return M::mock('Epilog\Interfaces\StreamReaderInterface')
+        return M::mock('Epilog\Interfaces\InputReaderInterface')
                 ->shouldReceive('block')
                 ->andReturn(M::self())
                 ->shouldReceive('readChar')

@@ -4,7 +4,7 @@ namespace Epilog;
 
 use Epilog\Interfaces\TailInterface;
 use Epilog\Interfaces\MonitorInterface;
-use Epilog\Interfaces\StreamReaderInterface;
+use Epilog\Interfaces\InputReaderInterface;
 use RegexGuard\Factory as RegexGuard;
 use Docopt\Response;
 use ErrorException;
@@ -32,7 +32,7 @@ class Epilog
     /**
      * Input reader
      *
-     * @var \Epilog\Interfaces\StreamReaderInterface
+     * @var \Epilog\Interfaces\InputReaderInterface
      */
     protected $stdin;
 
@@ -60,7 +60,7 @@ class Epilog
         $this->regexGuard = RegexGuard::getGuard();
     }
 
-    public function run(TailInterface $log, StreamReaderInterface $stdin = null)
+    public function run(TailInterface $log, InputReaderInterface $stdin = null)
     {
         $this->stdin = $stdin ?: new InputReader;
         $this->stdin->block(false);
