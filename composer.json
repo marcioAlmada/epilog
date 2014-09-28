@@ -24,7 +24,6 @@
         "regex-guard/regex-guard": "~1.0"
     },
     "require-dev": {
-        "mikey179/vfsStream": "~1.2",
         "mockery/mockery": "dev-master"
     },
     "minimum-stability": "dev"
