@@ -14,7 +14,6 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
 {
     protected $defaults = [
         '--no-follow' => false,
-        '--sleep-interval' => 1,
         '--theme' => 'default',
         '--theme-invert' => false,
         '--filter' => null,
