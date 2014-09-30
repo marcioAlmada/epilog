@@ -15,7 +15,7 @@ class InputReader implements InputReaderInterface
 
     public function block($block = true)
     {
-        stream_set_blocking($this->resource, $block);
+        stream_set_blocking($this->resource, (int) $block);
 
         return $this;
     }
