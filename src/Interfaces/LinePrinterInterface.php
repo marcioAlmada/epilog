@@ -2,7 +2,7 @@
 
 namespace Epilog\Interfaces;
 
-interface PrinterInterface
+interface LinePrinterInterface
 {
     public function __construct(LineParserInterface $parser, $theme, $invert = false);
 

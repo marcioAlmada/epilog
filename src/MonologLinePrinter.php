@@ -3,9 +3,9 @@
 namespace Epilog;
 
 use Epilog\Interfaces\LineParserInterface;
-use Epilog\Interfaces\PrinterInterface;
+use Epilog\Interfaces\LinePrinterInterface;
 
-class MonologLinePrinter implements PrinterInterface
+class MonologLinePrinter implements LinePrinterInterface
 {
     protected $parser;
     protected $invert;
