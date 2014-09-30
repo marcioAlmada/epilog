@@ -28,6 +28,13 @@ class Epilog
     ];
 
     /**
+     * table of callable subcommands
+     *
+     * @var array
+     */
+    protected $commands = [];
+
+    /**
      * Epilog command line args container
      *
      * @var \Docopt\Response
@@ -67,6 +74,23 @@ class Epilog
         $this->ticker = new Ticker;
         $this->printer = $this->loadPrinter();
         $this->regexGuard = RegexGuard::getGuard();
+        $this->commands['']  = function() {};
+        $this->commands['q'] = function() { $this->quit(); };
+        $this->commands['r'] = function() { $this->loadRandomTheme(); };
+        $this->commands['c'] = function() { $this->output($this->printer->clearAll()); };
+        $this->commands['i'] = function() { $this->args['--theme-invert'] = $this->printer->invert(); };
+        $this->commands['d'] = function() { $this->args['--debug'] = ! $this->args['--debug']; };
+        $this->commands['-'] = function() { $this->args['--filter'] = null; };
+        $this->commands['default'] = function($command) {
+            if($this->regexGuard->isRegexValid($command)){
+                $this->args['--filter'] = $command;
+            } elseif (isset(self::$themes[$command])) {
+                $this->args['--theme'] = self::$themes[$command];
+                $this->printer = $this->loadPrinter();
+            } else {
+                $this->output(" Invalid option \"{$command}\" given.\n");
+            }
+        };
     }
 
     public function run(TailInterface $log, InputReaderInterface $stdin = null)
@@ -98,14 +122,14 @@ class Epilog
     protected function handleInteraction()
     {
         if (false !== $this->stdin->readChar()) {
-
             $this->output(
                 "\n Woot! Epilog here. Please type a theme number,"
                 . " a valid regexp to filter messages or a valid flag: \n"
                 . "\n [#] load another theme:\n"
             );
-            foreach (self::$themes as $key => $theme)
+            foreach (self::$themes as $key => $theme){
                 $this->output((! ($key & 1) ? "    \t" : "\n    ")  . "{$key}:$theme");
+            }
             $this->output(
                 "\n\n [ r ] load random theme from list above."
                 . "\n [ i ] toggle invert theme."
@@ -116,38 +140,9 @@ class Epilog
                 . "\n\n [ ⏎ ] "
             );
 
-            $command = $this->stdin->block()->readLine();
-
-            switch ($command) {
-                case "":
-                    break;
-                case 'q':
-                    $this->quit();
-                case 'r':
-                    $this->loadRandomTheme();
-                    break;
-                case 'c':
-                    $this->output($this->printer->clearAll());
-                    break;
-                case 'i':
-                    $this->args['--theme-invert'] = $this->printer->invert();
-                    break;
-                case 'd':
-                    $this->args['--debug'] = ! $this->args['--debug'];
-                    break;
-                case '-':
-                    $this->args['--filter'] = null;
-                    break;
-                default:
-                    if($this->regexGuard->isRegexValid($command))
-                        $this->args['--filter'] = $command;
-                    elseif (array_key_exists($command, self::$themes)) {
-                        $this->args['--theme'] = self::$themes[$command];
-                        $this->printer = $this->loadPrinter();
-                    } else
-                        $this->output(" Invalid option \"{$command}\" given.\n");
-                    break;
-            }
+            $command = $input = $this->stdin->block()->readLine();
+            if(! isset($this->commands[$command])) $command = 'default';
+            $this->commands[$command]->__invoke($input);
             $this->output($this->printer->unformat());
             $this->stdin->block(false);
         }
