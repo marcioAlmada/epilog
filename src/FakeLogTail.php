@@ -107,8 +107,8 @@ class FakeLogTail implements TailInterface
     /**
      * Returns random elements from a provided array
      *
-     * @param  array            $array Array to take elements from. Defaults to a-f
-     * @param  integer          $count Number of elements to take.
+     * @param array   $array Array to take elements from. Defaults to a-f
+     * @param integer $count Number of elements to take.
      *
      * @return array New array with $count elements from $array
      */

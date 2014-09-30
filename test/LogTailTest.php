@@ -54,7 +54,7 @@ class LogTailTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("line 10\n", $log->fgets());
         $this->assertEquals('', $log->fgets());
         $this->assertTrue($log->eof());
-        
+
         $this->growLog('bump!');
         $log->seekLastLineRead();
         $this->assertFalse($log->eof());

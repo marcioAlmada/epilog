@@ -3,11 +3,9 @@
 namespace Epilog;
 
 use Epilog\Interfaces\TailInterface;
-use Epilog\Interfaces\MonitorInterface;
 use Epilog\Interfaces\InputReaderInterface;
 use RegexGuard\Factory as RegexGuard;
 use Docopt\Response;
-use ErrorException;
 
 class Epilog
 {
@@ -74,15 +72,15 @@ class Epilog
         $this->ticker = new Ticker;
         $this->printer = $this->loadPrinter();
         $this->regexGuard = RegexGuard::getGuard();
-        $this->commands['']  = function() {};
-        $this->commands['q'] = $this->commands[false] = function() { $this->quit(); };
-        $this->commands['r'] = function() { $this->loadRandomTheme(); };
-        $this->commands['c'] = function() { $this->output($this->printer->clearAll()); };
-        $this->commands['i'] = function() { $this->args['--theme-invert'] = $this->printer->invert(); };
-        $this->commands['d'] = function() { $this->args['--debug'] = ! $this->args['--debug']; };
-        $this->commands['-'] = function() { $this->args['--filter'] = null; };
-        $this->commands['default'] = function($command) {
-            if($this->regexGuard->isRegexValid($command)){
+        $this->commands['']  = function () {};
+        $this->commands['q'] = $this->commands[false] = function () { $this->quit(); };
+        $this->commands['r'] = function () { $this->loadRandomTheme(); };
+        $this->commands['c'] = function () { $this->output($this->printer->clearAll()); };
+        $this->commands['i'] = function () { $this->args['--theme-invert'] = $this->printer->invert(); };
+        $this->commands['d'] = function () { $this->args['--debug'] = ! $this->args['--debug']; };
+        $this->commands['-'] = function () { $this->args['--filter'] = null; };
+        $this->commands['default'] = function ($command) {
+            if ($this->regexGuard->isRegexValid($command)) {
                 $this->args['--filter'] = $command;
             } elseif (isset(self::$themes[$command])) {
                 $this->args['--theme'] = self::$themes[$command];
@@ -127,7 +125,7 @@ class Epilog
                 . " a valid regexp to filter messages or a valid flag: \n"
                 . "\n [#] load another theme:\n"
             );
-            foreach (self::$themes as $key => $theme){
+            foreach (self::$themes as $key => $theme) {
                 $this->output((! ($key & 1) ? "    \t" : "\n    ")  . "{$key}:$theme");
             }
             $this->output(

@@ -50,10 +50,3 @@ class MonologLineParserTest extends \PHPUnit_Framework_TestCase
         ];
     }
 }
-
-
-
-
-
-
-
