@@ -11,6 +11,11 @@ use ErrorException;
 
 class Epilog
 {
+    /**
+     * Theme tables
+     *
+     * @var array
+     */
     static $themes = [
         1 => 'default',
         2 => 'chaplin',
@@ -36,25 +41,29 @@ class Epilog
      */
     protected $stdin;
 
+    /**
+     * Line printer
+     *
+     * @var \Epilog\Interfaces\LinePrinterInterface
+     */
     protected $printer;
 
+    /**
+     * @var \Epilog\Ticker
+     */
     protected $ticker;
 
     /**
-     * Screen update interval in useconds
+     * Regex validator
      *
-     * @var double
+     * @var \RegexGuard\RegexGuard
      */
-    protected $sleep;
-
     protected $regexGuard;
-
-    protected $loop = 0;
 
     public function __construct(Response $args)
     {
         $this->args = $args;
-        $this->sleep  = (float) $args['--sleep-interval'];
+        $args['--sleep-interval']  = (float) $args['--sleep-interval'];
         $this->ticker = new Ticker;
         $this->printer = $this->loadPrinter();
         $this->regexGuard = RegexGuard::getGuard();
@@ -171,7 +180,7 @@ class Epilog
 
     protected function sleep()
     {
-        usleep($this->sleep * 1000000);
+        usleep($this->args['--sleep-interval'] * 1000000);
     }
 
     protected function loadPrinter()
