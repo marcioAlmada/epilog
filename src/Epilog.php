@@ -75,7 +75,7 @@ class Epilog
         $this->printer = $this->loadPrinter();
         $this->regexGuard = RegexGuard::getGuard();
         $this->commands['']  = function() {};
-        $this->commands['q'] = function() { $this->quit(); };
+        $this->commands['q'] = $this->commands[false] = function() { $this->quit(); };
         $this->commands['r'] = function() { $this->loadRandomTheme(); };
         $this->commands['c'] = function() { $this->output($this->printer->clearAll()); };
         $this->commands['i'] = function() { $this->args['--theme-invert'] = $this->printer->invert(); };

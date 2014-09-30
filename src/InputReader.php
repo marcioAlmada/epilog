@@ -27,6 +27,8 @@ class InputReader implements InputReaderInterface
 
     public function readLine()
     {
-        return trim(chop(fgets($this->resource))) ?: false;
+        $input = fgets($this->resource);
+
+        return (false !== $input) ? trim(chop($input)) : $input;
     }
 }
