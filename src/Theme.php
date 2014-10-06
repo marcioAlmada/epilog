@@ -2,10 +2,11 @@
 
 namespace Epilog;
 
+use Epilog\Interfaces\ThemeInterface;
 use Symfony\Component\Yaml\Yaml;
 use InvalidArgumentException;
 
-class Theme extends DataBag
+class Theme extends DataBag implements ThemeInterface
 {
     public function __construct($themeFile)
     {

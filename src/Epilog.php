@@ -178,10 +178,10 @@ class Epilog
 
     protected function loadPrinter()
     {
-        $themeFile = __DIR__ . '/../themes/'. $this->args['--theme'] . '.yml';
+        $theme = __DIR__ . '/../themes/'. $this->args['--theme'] . '.yml';
 
         return new MonologLinePrinter(
-            new MonologLineParser, $themeFile, $this->args['--theme-invert']);
+            new MonologLineParser, new Theme($theme), $this->args['--theme-invert']);
     }
 
     protected function loadRandomTheme()

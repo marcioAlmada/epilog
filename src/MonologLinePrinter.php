@@ -4,6 +4,7 @@ namespace Epilog;
 
 use Epilog\Interfaces\LineParserInterface;
 use Epilog\Interfaces\LinePrinterInterface;
+use Epilog\Interfaces\ThemeInterface;
 
 class MonologLinePrinter implements LinePrinterInterface
 {
@@ -11,11 +12,11 @@ class MonologLinePrinter implements LinePrinterInterface
     protected $invert;
     protected $theme;
 
-    public function __construct(LineParserInterface $parser, $theme, $invert = false)
+    public function __construct(LineParserInterface $parser, ThemeInterface $theme, $invert = false)
     {
         $this->parser = $parser;
         $this->invert = $invert;
-        $this->theme  =  new Theme($theme);
+        $this->theme  = $theme;
     }
 
     public function invert()
