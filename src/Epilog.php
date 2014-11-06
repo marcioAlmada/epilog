@@ -73,12 +73,12 @@ class Epilog
         $this->printer = $this->loadPrinter();
         $this->regexGuard = RegexGuard::getGuard();
         $this->commands['']  = function () {};
-        $this->commands['q'] = $this->commands[false] = function () { $this->quit(); };
-        $this->commands['r'] = function () { $this->loadRandomTheme(); };
-        $this->commands['c'] = function () { $this->output($this->printer->clearAll()); };
-        $this->commands['i'] = function () { $this->args['--theme-invert'] = $this->printer->invert(); };
-        $this->commands['d'] = function () { $this->args['--debug'] = ! $this->args['--debug']; };
-        $this->commands['-'] = function () { $this->args['--filter'] = null; };
+        $this->commands['q'] = $this->commands[false] = [$this, 'quit'];
+        $this->commands['r'] = [$this, 'loadRandomTheme'];
+        $this->commands['c'] = [$this, 'clear'];
+        $this->commands['i'] = [$this, 'invertTheme'];
+        $this->commands['d'] = [$this, 'toggleDebug'];
+        $this->commands['-'] = [$this, 'clearFilter'];
         $this->commands['default'] = function ($command) {
             if ($this->regexGuard->isRegexValid($command)) {
                 $this->args['--filter'] = $command;
@@ -140,7 +140,7 @@ class Epilog
 
             $command = $input = $this->stdin->block()->readLine();
             if(! isset($this->commands[$command])) $command = 'default';
-            $this->commands[$command]->__invoke($input);
+            call_user_func_array($this->commands[$command], [$input]);
             $this->output($this->printer->unformat());
             $this->stdin->block(false);
         }
@@ -166,9 +166,9 @@ class Epilog
         return $this->printer->pad($statusLine, $screenWidth) . $this->printer->unformat();
     }
 
-    protected function quit($message = 'Bye!', $code = 0)
+    protected function quit()
     {
-        throw new FlowException($message, $code);
+        throw new FlowException('Bye!', 0);
     }
 
     protected function sleep()
@@ -190,4 +190,23 @@ class Epilog
         $this->printer = $this->loadPrinter();
     }
 
+    protected function clear()
+    {
+        $this->output($this->printer->clearAll());
+    }
+
+    protected function invertTheme()
+    {
+        $this->args['--theme-invert'] = $this->printer->invert();
+    }
+
+    protected function toggleDebug()
+    {
+        $this->args['--debug'] = ! $this->args['--debug'];
+    }
+
+    protected function clearFilter()
+    {
+        $this->args['--filter'] = null;
+    }
 }
