@@ -28,8 +28,8 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException        Epilog\FlowException
-     * @expectedExceptionMessae  Bye!
+     * @expectedException         Epilog\FlowException
+     * @expectedExceptionMessage  Bye!
      */
     public function testNoFollowOption()
     {
@@ -47,8 +47,8 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException        Epilog\FlowException
-     * @expectedExceptionMessae  Bye!
+     * @expectedException         Epilog\FlowException
+     * @expectedExceptionMessage  Bye!
      */
     public function testQuitInteraction()
     {
