@@ -3,14 +3,20 @@
 
 include __DIR__ . '/bootstrap.php';
 
-$handler = new \Docopt\Handler([
-    'version'=>'Epilog 0.1.1',
-    'optionsFirst' => true
-]);
-$response = $handler->handle(file_get_contents(__DIR__ . '/spec/epilog'));
-$command = __DIR__ . '/commands/' . $response['<command>'] . '.php';
+try {
+    $handler = new \Docopt\Handler([
+        'version'=>'Epilog 0.1.1',
+        'optionsFirst' => true
+    ]);
+    $response = $handler->handle(file_get_contents(__DIR__ . '/spec/epilog'));
+    $command = __DIR__ . '/commands/' . $response['<command>'] . '.php';
 
-if(! preg_match('#[a-z\-]#', $command) || ! file_exists($command))
-    throw new FlowException("Command not defined, try epilog --help", 1);
-    
-include $command;
+    if(! preg_match('#[a-z\-]#', $command) || ! file_exists($command))
+        throw new FlowException("Command not defined, try epilog --help", 1);
+
+    include $command;
+
+} catch (\Exception $e) {
+    echo "\e[0m", $e->getMessage(), "\n";
+    return $e->getCode();
+}

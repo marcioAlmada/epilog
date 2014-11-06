@@ -8,9 +8,3 @@ foreach (['/vendor/autoload.php', '/../autoload.php', '/../../autoload.php'] as 
         break;
     }
 }
-
-// global error handler
-set_exception_handler(function ($e) {
-    echo "\e[0m", $e->getMessage(), "\n";
-    exit($e->getCode());
-});
