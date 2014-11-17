@@ -8,6 +8,9 @@ use InvalidArgumentException;
 
 class Theme extends DataBag implements ThemeInterface
 {
+    /**
+     * @param string $themeFile
+     */
     public function __construct($themeFile)
     {
         if(! is_readable($themeFile))
