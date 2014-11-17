@@ -12,7 +12,7 @@ try {
     $command = __DIR__ . '/commands/' . $response['<command>'] . '.php';
 
     if(! preg_match('#[a-z\-]#', $command) || ! file_exists($command))
-        throw new FlowException("Command not defined, try epilog --help", 1);
+        throw new FlowException("Command `{$response['<command>']}` not defined, try epilog --help", 1);
 
     include $command;
 
