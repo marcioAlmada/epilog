@@ -99,6 +99,9 @@ class FakeLogTail implements TailInterface
         return join($words, ' ') . '.';
     }
 
+    /**
+     * @param integer $nbElements
+     */
     protected static function randomizeNbElements($nbElements)
     {
         return (int) ($nbElements * mt_rand(60, 140) / 100) + 1;
