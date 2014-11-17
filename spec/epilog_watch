@@ -1,5 +1,5 @@
 Usage:
-    epilog watch <file> [--filter=<filter>][--sleep-interval=<s>][--theme=<theme>][--theme-invert][--no-follow][--debug]
+    epilog watch <file> [--filter=<filter>][--sleep-interval=<s>][--theme=<theme>][--theme-invert][--no-follow][--app=<app>][--debug]
 
 Options:
   -f --filter=<filter>     Filter log entries with a given regular expression.
@@ -7,5 +7,6 @@ Options:
   -t --theme=<theme>       Theme, see `Epilogs themes` to see list the list of themes [default: sunrise].
   -i --theme-invert        Invert theme foreground vs background colors.
   -n --no-follow           Print last logged lines and quit.
+  -a --app=<app>           Finds latest project log automatically by framework (ex: --app laravel) [default: generic].
   -d --debug               Reloads theme on every loop. Slow, but useful while building new themes.
   -h --help                Show this screen.
