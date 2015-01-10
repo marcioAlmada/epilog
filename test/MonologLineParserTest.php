@@ -44,6 +44,17 @@ class MonologLineParserTest extends \PHPUnit_Framework_TestCase
                 ]
             ],
             [
+                '[2014-12-11 20:23:47] log.WARNING: POST http://just/some-url/657B_A-YD {"data":"[object] (stdClass: {\"serialized\":\"object\",\"sometimestamp\":\"2014-12-11T20:23:46.764Z\"})","someobj":{"string":"ABC-DEF"}} []',
+                [
+                    '{date}'    => \DateTime::createFromFormat('Y-m-d H:i:s', '2014-12-11 20:23:47'),
+                    '{logger}'  => 'log',
+                    '{level}'   => 'WARNING',
+                    '{message}' => 'POST http://just/some-url/657B_A-YD',
+                    '{context}' => json_decode('{"data":"[object] (stdClass: {\"serialized\":\"object\",\"sometimestamp\":\"2014-12-11T20:23:46.764Z\"})","someobj":{"string":"ABC-DEF"}}', true),
+                    '{extra}'    => json_decode('[]', true),
+                ]
+            ],
+            [
                 "invalid log Consequatur vitae molestias ut ipsa praesentium. [] []",
                 null
             ]
