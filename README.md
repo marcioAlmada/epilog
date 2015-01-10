@@ -133,7 +133,7 @@ Which will make log lines look like the following, when interpreted:
 ## Roadmap
 
 - [x] Basic functionalities
-- [x] Add `--app` option to allow easy framework integration. Ex: `epilog <command> --app laravel`
+- [x] Add `--app` option to allow easy framework integration. Ex: `epilog watch /my/project --app laravel`
 - [ ] Add `listen` command to aggregate log entries through a REST API. Ex: `epilog listen --port 8888`
 - [ ] Add `server` command to view logs in a browser instead of terminal `epilog server <file> --port 8888`
 - [ ] Add better unicode support, more themes etc
