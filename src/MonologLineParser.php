@@ -6,7 +6,7 @@ use Epilog\Interfaces\LineParserInterface;
 
 class MonologLineParser implements LineParserInterface
 {
-    protected $pattern = '/^\[(?P<date>.*)\]\s(?P<logger>\w+).(?P<level>\w+):\s(?P<message>.+)\s(?P<context>\[.*\])\s(?P<extra>\[.*\])$/';
+    protected $pattern = '/^\[(?P<date>.*)\]\s(?P<logger>\w+).(?P<level>\w+):\s(?P<message>.+?)\s(?P<context>\{.*\}|\[.*\])\s(?P<extra>\{.*\}|\[.*\])$/';
 
     /**
      * Constructor
