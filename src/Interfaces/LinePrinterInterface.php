@@ -4,9 +4,6 @@ namespace Epilog\Interfaces;
 
 interface LinePrinterInterface
 {
-    /**
-     * @return void
-     */
     public function __construct(LineParserInterface $parser, ThemeInterface $theme, $invert = false);
 
     /**

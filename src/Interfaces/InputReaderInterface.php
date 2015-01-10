@@ -4,9 +4,6 @@ namespace Epilog\Interfaces;
 
 interface InputReaderInterface
 {
-    /**
-     * @return void
-     */
     public function __construct($wrapper);
 
     /**
