@@ -85,6 +85,20 @@ Woot! Epilog here. Please type a theme number, a valid regexp or a valid flag:
 
 Epilog is still pre alpha. A more detailed manual will be added soon.
 
+## Framework Integration
+
+Epilog can use [log finders](https://github.com/marcioAlmada/epilog/tree/master/src/LogFinder) to look for
+logs inside app directories according to framework conventions so you don't need to aim at your latest
+log files mannualy. Ex:
+
+```bash
+$ epilog watch ~/www/my-project --app laravel
+# instead of long and boring
+$ epilog watch ~/www/my-project/app/storage/logs/log-cli-server-2015-01-11.txt
+```
+
+> PRs implementing log finders to support your framework of choice are highly encouraged :octocat:
+
 ## Themes
 
 Epilog themes are very simple `yml` files with hooks where you can put ANSI color escape sequences and literal text.
