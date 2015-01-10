@@ -16,8 +16,6 @@ The lightweight, themeable and interactive PSR-3 log viewer. Monitor monologs wi
 
 ## Install
 
-:bomb: Not ready to rumble yet. Try at your own risk!
-
 As a composer project dependency:
 
 ```json
