@@ -36,6 +36,16 @@ class DataBag
         return $this->data;
     }
 
+    public function keys()
+    {
+        return array_keys($this->data);
+    }
+
+    public function values()
+    {
+        return array_values($this->data);
+    }
+
     protected function makePath($key)
     {
         return explode('.', str_replace(' ', '.', $key));

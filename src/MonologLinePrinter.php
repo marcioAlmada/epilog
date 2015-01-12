@@ -48,7 +48,7 @@ class MonologLinePrinter implements LinePrinterInterface
             $line = (($this->invert) ? "\e[7m" : '')
                     . $this->theme->{'prepend'}
                     . $this->pad(
-                        str_replace(array_keys($data->all()), $data->all(), $this->theme->{'template'}),
+                        str_replace($data->keys(), $data->values(), $this->theme->{'template'}),
                         $this->getScreenWidth()  + $this->theme->{'compensation'})
                     . $this->theme->{'append'};
         }
