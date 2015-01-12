@@ -18,7 +18,7 @@
         "epilog"
     ],    
     "require": {
-        "docopt/docopt": "dev-develop",
+        "docopt/docopt": "~1.0",
         "igorw/get-in": "~1.0",
         "symfony/yaml": "2.5.3",
         "regex-guard/regex-guard": "~1.0"
