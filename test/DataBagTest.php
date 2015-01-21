@@ -47,4 +47,16 @@ class DataBagTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('d', $this->bag->{'a b c'});
         $this->assertEquals('default', $this->bag->get('not set', 'default'));
     }
+
+    public function testKeys()
+    {
+        $this->assertSame(['a'], $this->bag->keys());
+    }
+
+    public function testValues()
+    {
+        $this->bag->set('a', 'b');
+        $this->assertSame(['b'], $this->bag->values());
+    }
+
 }
