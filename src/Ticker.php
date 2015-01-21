@@ -2,18 +2,18 @@
 
 namespace Epilog;
 
-class Ticker
-{
-    protected $states;
+use InfiniteIterator, ArrayIterator;
 
+class Ticker extends InfiniteIterator
+{
     public function __construct(array $states = ['•••<', '•<<<', '<<<<', '<<<•', '<•••', '••••'])
     {
-        end($states);
-        $this->states = $states;
+        parent::__construct(new ArrayIterator($states));
+        $this->rewind();
     }
 
     public function __toString()
-    {
-        return next($this->states) ?: reset($this->states);
+    {   
+        return $this->current() . $this->next();
     }
 }
