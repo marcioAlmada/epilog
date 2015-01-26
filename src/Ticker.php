@@ -13,7 +13,7 @@ class Ticker extends InfiniteIterator
     }
 
     public function __toString()
-    {   
+    {
         return $this->current() . $this->next();
     }
 }

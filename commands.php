@@ -9,23 +9,23 @@ use Minime\Annotations\Reader as AnnotationsReader;
 /**
  * @command.spec
  * ​             _   _
- *             |_| | |            
- *    ___ _ __  _  | | ___   __ _ 
+ *             |_| | |
+ *    ___ _ __  _  | | ___   __ _
  *   / _ \ '_ \| | | |/ _ \_/ _` |
  *  |  __/ |_) | |_| | (_) _ (_| |
  *   \___| .__/|_____|\___/ \__, |
  *       | |                 __/ |
- *       |_|                |___/ 
- * 
+ *       |_|                |___/
+ *
  * Usage:
  *   epilog <command> [<args>...]
- * 
+ *
  * Commands are:
  *   epilog watch   Monitor a log files
  *   epilog pretend Display a fake log stream, for testing only
- * 
+ *
  * See 'epilog <command> -h' to read about a specific subcommand.
- * 
+ *
  * Options:
  *   -h --help                Show this screen.
  *   -v --version             Show version.
@@ -34,7 +34,7 @@ function epilog()
 {
     $specReader = AnnotationsReader::createFromDefaults();
     $handler = new Handler([ 'version'=>'Epilog 0.1.2', 'optionsFirst' => true ]);
-    
+
     $response = $handler->handle(
         $specReader->getFunctionAnnotations(__FUNCTION__)->get('command.spec'));
 
@@ -42,7 +42,7 @@ function epilog()
 
     if(! function_exists($command))
         throw new FlowException("Command `{$response['<command>']}` not defined, try epilog --help", 1);
-    
+
     $handler->optionsFirst = false;
     $response = $handler->handle(
         $specReader->getFunctionAnnotations($command)->get('command.spec'));
@@ -52,9 +52,10 @@ function epilog()
 
 /**
  * @command.spec
+ *
  * Usage:
  *     epilog pretend [--filter=<filter>][--sleep-interval=<s>][--theme=<theme>][--theme-invert][--no-follow][--debug]
- * 
+ *
  * Options:
  *   -f --filter=<filter>     Filter log entries with a given regular expression.
  *   -s --sleep-interval=<s>  Sleep interval [default: .5].
@@ -66,14 +67,15 @@ function epilog()
  */
 function pretend(Response $response)
 {
-    (new Epilog($response))->run(new FakeLogTail);    
+    (new Epilog($response))->run(new FakeLogTail);
 }
 
 /**
  * @command.spec
- *  Usage:
+ *
+ * Usage:
  *     epilog watch <file> [--filter=<filter>][--sleep-interval=<s>][--theme=<theme>][--theme-invert][--no-follow][--app=<app>][--debug]
- * 
+ *
  * Options:
  *   -f --filter=<filter>     Filter log entries with a given regular expression.
  *   -s --sleep-interval=<s>  Sleep interval [default: .5].
