@@ -2,17 +2,15 @@
     "main": "epilog",
     "directories": [
         "src",
-        "spec",
-        "commands",
         "themes",
         "vendor/composer",
         "vendor/docopt/docopt/src",
+        "vendor/minime/annotations",
         "vendor/regex-guard/regex-guard/src",
         "vendor/igorw/get-in/src"
     ],
     "compactors": [
-        "Herrera\\Box\\Compactor\\Json",
-        "Herrera\\Box\\Compactor\\Php"
+        "Herrera\\Box\\Compactor\\Json"
     ],
     "compression": "GZ",
     "finder": [
@@ -27,6 +25,7 @@
     "files": [
         "LICENSE",
         "bootstrap.php",
+        "commands.php",
         "vendor/autoload.php"
     ],
     "output": "dist/epilog.phar",
