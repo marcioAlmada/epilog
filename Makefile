@@ -16,7 +16,7 @@ run:
 	./$(OUTPUT) --help
 
 pretend:
-	./$(OUTPUT) . --pretend
+	./$(OUTPUT) pretend
 
 clean:
 	$(DELETE_FILE) $(OUTPUT)
