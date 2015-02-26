@@ -13,7 +13,8 @@ class Laravel
 
         if (is_file($dir)) { // don't try to find log if we already have a log file
             $log = $dir;
-        } else {
+        }
+        else {
             if($dir === '.') $dir = getcwd();
             $dir = preg_replace('#/$#', '', $dir);
             $logs =
