@@ -12,7 +12,7 @@
 
 The lightweight, themeable and interactive PSR-3 log viewer. Monitor monologs with style:
 
-[![asciinema](https://dl.dropboxusercontent.com/u/49549530/epilog/asciinema.png)](https://asciinema.org/a/12309?autoplay=true&speed=1.5)
+[![asciinema](https://dl.dropboxusercontent.com/u/49549530/epilog/asciinema.png?v1.0)](https://asciinema.org/a/12309?autoplay=true&speed=2)
 
 ## Install
 
@@ -21,7 +21,7 @@ As a composer project dependency:
 ```json
 {
     "require": {
-        "marc/epilog": "dev-master"
+        "marc/epilog": "~1.0"
     }
 }
 ```
@@ -29,7 +29,7 @@ As a composer project dependency:
 As a composer global package:
 
 ```bash
-composer global require marc/epilog:dev-master
+composer global require marc/epilog:~1.0
 ```
 
 Or build the phar yourself:
