@@ -7,7 +7,8 @@
         "vendor/docopt/docopt/src",
         "vendor/minime/annotations",
         "vendor/regex-guard/regex-guard/src",
-        "vendor/igorw/get-in/src"
+        "vendor/igorw/get-in/src",
+        "vendor/hamcrest/hamcrest-php/hamcrest"
     ],
     "compactors": [
         "Herrera\\Box\\Compactor\\Json"
