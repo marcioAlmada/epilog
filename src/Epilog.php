@@ -77,7 +77,6 @@ class Epilog
         $this->commands['r'] = [$this, 'loadRandomTheme'];
         $this->commands['c'] = [$this, 'clear'];
         $this->commands['i'] = [$this, 'invertTheme'];
-        $this->commands['d'] = [$this, 'toggleDebug'];
         $this->commands['-'] = [$this, 'clearFilter'];
         $this->commands['default'] = function ($command) {
             if ($this->regexGuard->isRegexValid($command)) {
@@ -131,7 +130,6 @@ class Epilog
             $this->output(
                 "\n\n [ r ] load random theme from list above."
                 . "\n [ i ] toggle invert theme."
-                . "\n [ d ] toggle debug mode."
                 . "\n [ c ] clear screen."
                 . "\n [ - ] reset regexp filter."
                 . "\n [ q ] quit."
@@ -198,11 +196,6 @@ class Epilog
     protected function invertTheme()
     {
         $this->args['--theme-invert'] = $this->printer->invert();
-    }
-
-    protected function toggleDebug()
-    {
-        $this->args['--debug'] = ! $this->args['--debug'];
     }
 
     protected function clearFilter()

@@ -118,12 +118,11 @@ class EpilogTest extends \PHPUnit_Framework_TestCase
     public function testDebugInteraction()
     {
         $stdin = $this->getStdinMockTemplate()
-                      ->shouldReceive('readLine')->times(4)
-                      ->andReturn('d', 'q', 'd', 'q')
+                      ->shouldReceive('readLine')->times(2)
+                      ->andReturn('d', 'q')
                       ->getMock();
-        $epilog = $this->getEpilog();
+        $epilog = $this->getEpilog(['--debug' => true]);
         $this->assertTrue($this->sandbox($epilog, $stdin)->args()['--debug']);
-        $this->assertFalse($this->sandbox($epilog, $stdin)->args()['--debug']);
     }
 
     public function testFilterInteraction()
