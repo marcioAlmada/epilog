@@ -29,6 +29,6 @@
         "commands.php",
         "vendor/autoload.php"
     ],
-    "output": "dist/epilog.phar",
+    "output": "bin/epilog.phar",
     "stub": true
 }

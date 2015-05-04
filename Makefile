@@ -1,6 +1,6 @@
 COMPILE      = box build
-TARGET       = dist/epilog.phar
-OUTPUT       = dist/epilog
+TARGET       = bin/epilog.phar
+OUTPUT       = bin/epilog
 DELETE_FILE  = rm
 CHMOD_FILE   = chmod +x
 MOVE_FILE    = mv
