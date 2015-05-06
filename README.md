@@ -26,6 +26,13 @@ As a composer project dependency:
 }
 ```
 
+As a packed phar:
+
+```bash
+wget https://github.com/marcioAlmada/epilog/raw/master/bin/epilog && chmod +x epilog
+mv epilog /usr/local/bin/ # or somewhere in your $PATH
+```
+
 As a composer global package:
 
 ```bash
@@ -79,8 +86,6 @@ Woot! Epilog here. Please type a theme number, a valid regexp or a valid flag:
 [ - ] reset regexp filter.
 [ q ] quit.
 ```
-
-Epilog is still pre alpha. A more detailed manual will be added soon.
 
 ## Framework Integration
 
@@ -167,7 +172,7 @@ Found a bug? Have an improvement? Take a look at the [issues](https://github.com
 
 ## Copyright
 
-Copyright (c) 2014 Márcio Almada. Distributed under the terms of an MIT-style license.
+Copyright (c) 2014-2015 Márcio Almada. Distributed under the terms of an MIT-style license.
 See LICENSE for details.
 
 [t-link]: https://travis-ci.org/marcioAlmada/epilog "Travis Build"
