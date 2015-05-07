@@ -46,7 +46,7 @@ Or build the phar yourself:
 git clone https://github.com/marcioAlmada/epilog.git
 cd epilog
 composer install
-make # phar will available at dist/ folder
+make # phar will available at bin/ folder
 sudo make install # will put epilog at /usr/local/bin/ folder
 ```
 
