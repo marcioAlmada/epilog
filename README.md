@@ -75,7 +75,6 @@ Woot! Epilog here. Please type a theme number, a valid regexp or a valid flag:
 
 [ r ] load random theme from list above.
 [ i ] toggle invert theme.
-[ d ] toggle debug mode.
 [ c ] clear screen.
 [ - ] reset regexp filter.
 [ q ] quit.
