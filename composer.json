@@ -28,7 +28,8 @@
         "regex-guard/regex-guard": "~1.0"
     },
     "require-dev": {
-        "mockery/mockery": "dev-master"
+        "mockery/mockery": "dev-master",
+        "mikey179/vfsStream": "~1.2.0"
     },
     "minimum-stability": "dev"
 }
