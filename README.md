@@ -16,6 +16,8 @@ The lightweight, themeable and interactive PSR-3 log viewer. Monitor monologs wi
 
 ## Install
 
+[![Join the chat at https://gitter.im/marcioAlmada/epilog](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/marcioAlmada/epilog?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 As a composer project dependency:
 
 ```json
