@@ -33,7 +33,8 @@ use Minime\Annotations\Reader as AnnotationsReader;
 function epilog()
 {
     $specReader = AnnotationsReader::createFromDefaults();
-    $handler = new Handler([ 'version'=>'Epilog 1.0', 'optionsFirst' => true ]);
+    $handler = new Handler([
+        'version'=> 'Epilog ' . Epilog::VERSION . ' by Márcio Almada', 'optionsFirst' => true ]);
 
     $response = $handler->handle(
         $specReader->getFunctionAnnotations(__FUNCTION__)->get('command.spec'));

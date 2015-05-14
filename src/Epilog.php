@@ -9,6 +9,8 @@ use Docopt\Response;
 
 class Epilog
 {
+    const VERSION  = '1.0.1';
+
     /**
      * Theme tables
      *
